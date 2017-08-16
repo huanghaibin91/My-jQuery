@@ -132,13 +132,14 @@
         // responseTxt - 包含调用成功时的结果内容
         // statusTXT - 包含调用的状态
         // xhr - 包含 XMLHttpRequest 对象
+
         // GET - 从指定的资源请求数据
         // $.get(URL,callback);
         // POST - 向指定的资源提交要处理的数据
         // $.post(URL,data,callback);
 
         // jQuery链式调用,return this返回当前对象，来维护插件链式调用，each循环实现每个对象的访问
-        $.fn.example = functon() {
+        $.fn.example = function () {
             return this.each(function() {
                 // do something
             });

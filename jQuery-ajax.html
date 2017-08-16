@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>jQuery Ajax</title>
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/2.0.0/jquery.js"></script>
+</head>
+
+<body>
+    <div class="cls1"></div>
+    <div class="cls2"></div>
+    <div class="cls3"></div>
+    <div class="cls4"></div>
+    <div class="cls5"></div>
+    <div class="cls6"></div>
+    <!-- script -->
+    <script type="text/javascript">
+        // $.ajax() 返回其创建的 XMLHttpRequest 对象
+
+        // jQuery.ajaxSetup([options]),设置全局 AJAX 默认选项
+
+        // $.ajax()得到的数据，则需要使用回调函数。beforeSend、error、dataFilter、success、complete
+        // beforeSend 在发送请求之前调用， 并且传入一个XMLHttpRequest作为参数。
+        // error 在请求出错时调用。 传入XMLHttpRequest对象， 描述错误类型的字符串以及一个异常对象（ 如果有的话）
+        // dataFilter 在请求成功之后调用。 传入返回的数据以及 "dataType",通过dataType选项还可以指定其他不同数据处理方式。除了单纯的XML，还可以指定 html、json、jsonp、script或者text
+        // 参数的值。 并且必须返回新的数据（ 可能是处理过的） 传递给success回调函数。
+        // success 当请求之后调用。 传入返回后的数据， 以及包含成功代码的字符串。
+        // complete 当请求完成之后调用这个函数， 无论成功或失败。 传入XMLHttpRequest对象， 以及一个包含成功或错误代码的字符串
+        $.ajax({
+            url: './ajax/json.json',
+            type: 'GET',
+            dataType: 'json',
+            // 还可以添加一参数些修改ajax函数默认值
+            beforeSend: function (xhr) {
+                console.log(xhr);
+                console.log('before send ...');
+            },
+            success: function (data, status) {
+                console.log(data);
+                console.log(status);
+            },
+            // dataFilter: function (data, dataType) {
+            //     console.log(dataType);
+            //     console.log(data);
+            // },
+            error: function (xhr, errorText, errorThrown) {
+                console.log(errorText);
+                console.log(errorThrown);
+                console.log('error ...');
+            },
+            complete: function (xhr, status) {
+                console.log(xhr);
+                console.log(status);
+                console.log('complete ...');
+            }
+        });
+        // 下面的的callback有三个参数：
+        // responseTxt - 包含调用成功时的结果内容
+        // statusTXT - 包含调用的状态
+        // xhr - 包含 XMLHttpRequest 对象
+        // load(url, [data]发送至服务器的 key/value 数据, [callback]),载入远程 HTML 文件代码并插入至 DOM 中
+        $('.cls2').load('./ajax/html.html', function (responseTxt, statusTXT, xhr) {
+            console.log(responseTxt);
+            console.log(statusTXT);
+            $('.cls3').text(data);
+        });
+        // jQuery.get(url, [data], [callback], [type]),简单的 GET 请求功能以取代复杂 $.ajax 。请求成功时可调用回调函数。如果需要在出错时执行函数，请使用 $.ajax
+        // jQuery.getJSON(url, [data], [callback]),通过 HTTP GET 请求载入 JSON 数据
+        // jQuery.getScript(url, [callback]),通过 HTTP GET 请求载入并执行一个 JavaScript 文件
+        // jQuery.post(url, [data], [callback], [type]),简单的 POST 请求功能以取代复杂 $.ajax 。请求成功时可调用回调函数。如果需要在出错时执行函数，请使用 $.ajax()
+
+    </script>
+</body>
+
+</html>
