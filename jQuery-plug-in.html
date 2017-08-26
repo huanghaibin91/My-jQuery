@@ -78,14 +78,14 @@
             //在插件中使用Plugin对象
             $.fn.myPlugin = function(options) {
                 return this.each(function () { // return this.each可以实现链式调用
-                    $this = $(this); // 在each方法内部，this指带的是普通的DOM元素了，如果需要调用jQuery的方法那就需要用$来重新包装
+                    $this = $(this); // 在each方法内部，this指带的是普通的DOM元素了，
+                    // 如果需要调用jQuery的方法那就需要用$来重新包装
                     //创建Plugin的实体
                     var plugin = new Plugin($this, options);
                     //调用其方法
                     return plugin.init();
                 });
             }
-
             // 在立即函数中可以声明私有方法，函数外不可访问
         })(jQuery, window, document);
 

@@ -152,11 +152,14 @@
         // };
 
         // jQuery为开发插件提拱了两个方法，分别是：
-        // jQuery.extend(object) = jQuery.object; 为扩展jQuery类本身.为类添加新的方法,可以理解为添加静态方法，类似$.ajax(),$.extend()
+        // jQuery.extend(object) = jQuery.object; 为扩展jQuery类本身.为类添加新的方法,可以理解为添加静态方法，
+        // 类似$.ajax(),$.extend()
 
-        // jQuery.fn.extend(object); 给jQuery对象添加方法,jQuery.fn.extend = jQuery.prototype.extend,类似$(ele).addClass()等等，需要调用jQuery实例的方法
+        // jQuery.fn.extend(object); 给jQuery对象添加方法,jQuery.fn.extend = jQuery.prototype.extend,
+        // 类似$(ele).addClass()等等，需要调用jQuery实例的方法
 
-        // $.extend(),extend(dest,src1,src2,src3...),合并多个对象,是将src1,src2,src3...合并到dest中,返回值为合并后的dest,后面对象的同名属性会覆盖前面的，没有的对象属性会被添加
+        // $.extend(),extend(dest,src1,src2,src3...),合并多个对象,是将src1,src2,src3...合并到dest中,
+        // 返回值为合并后的dest,后面对象的同名属性会覆盖前面的，没有的对象属性会被添加
         // extend(boolean,dest,src1,src2,src3...)，第一个布尔值为true时表示深度拷贝，属性中的对象的属性会被复制进属性对象
 
         // jQuery(function(){}) = jQuery(docunemt).ready(function(){})，意义为在DOM加载完毕后执行ready()方法
