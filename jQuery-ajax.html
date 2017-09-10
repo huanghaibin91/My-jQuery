@@ -73,6 +73,21 @@
         // jQuery.post(url, [data], [callback], [type]),简单的 POST 请求功能以取代复杂 $.ajax 。
         // 请求成功时可调用回调函数。如果需要在出错时执行函数，请使用 $.ajax()
 
+        // Ajax事件、XMLHttpRequest对象和设置作为参数传递给回调函数  
+        // 以下都是Ajax全局事件，任意Ajax都会触发，设置global: false将不会触发这些全局事件
+        // ajaxComplete(callback)
+        // ajaxError(callback)
+        // ajaxSend(callback)
+        // ajaxStart(callback)
+        // ajaxStop(callback)
+        // ajaxSuccess(callback)
+        $("#msg").ajaxComplete(function (event, request, settings) {
+            $(this).append("<li>请求完成.</li>");
+        });
+        // 局事件绝对不会被跨域（cross-domain）脚本或 JSONP 请求触发，和 global 属性的设置毫无关系
+        // 应用场景举例：页面存在多个甚至为数不少的ajax请求，但是这些ajax请求都有相同的消息机制。
+        // ajax请求开始前显示一个提示框，提示“正在读取数据“；ajax请求成功时提示框显示“数据获取成功”；ajax请求结束后隐藏提示框
+
     </script>
 </body>
 

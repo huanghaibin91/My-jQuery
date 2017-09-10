@@ -39,7 +39,9 @@
         console.log(jQuery.min(3, 5)); // 3
         jQuery.max(3, 5) // 5
 
-        // extend()还可以扩展对象：extend(boolean,dest,src1,src2,src3...) ，第一个参数boolean代表是否进行深度拷贝，默认是false。dest是目标对象，之后的对象会合并到dest中，后面的参数如果和前面的参数存在相同的名称，那么后面的会覆盖前面的参数值。重载的方法，我们一般用来在编写插件时用自定义插件参数去覆盖插件的默认参数
+        // extend()还可以扩展对象：extend(boolean,dest,src1,src2,src3...) ，第一个参数boolean代表是否进行深度拷贝，
+        // 默认是false。dest是目标对象，之后的对象会合并到dest中，后面的参数如果和前面的参数存在相同的名称，那么后面的
+        // 会覆盖前面的参数值。重载的方法，我们一般用来在编写插件时用自定义插件参数去覆盖插件的默认参数
         var result = $.extend(true, {}, {
             name: "John",
             location: {
