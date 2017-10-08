@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery-Callback</title>
+    <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.js"></script>
+</head>
+
+<body>
+    <script>
+        // $.Callbacks() 指一个多用途的回调函数列表对象，提供了一种强大的方法来管理回调函数列对
+        // $.Callbacks 是在 jQuery 内部使用，如为 .ajax，$.Deferred 等组件提供基础功能的函数。
+        // 它也可以用在类似功能的一些组件中，如自己开发的插件
+        // jQuery.Callbacks( flags )，一个多用途的回调列表对象，提供了强大的的方式来管理回调函数列表
+        // 参数flags：
+        // once: 确保这个回调列表只执行（ .fire() ）一次(像一个递延 Deferred).
+        // memory: 保持以前的值，将添加到这个列表的后面的最新的值立即执行调用任何回调 (像一个递延 Deferred).
+        // unique: 确保一次只能添加一个回调(所以在列表中没有重复的回调).
+        // stopOnFalse: 当一个回调返回false 时中断调用
+        
+        // $.Callbacks() 支持的方法，包括 ：
+        // callbacks.add()，回调列表中添加一个回调或回调的集合
+        // callbacks.remove(), 从回调列表中的删除一个回调或回调集合
+        // callbacks.fire(arguments )，传入指定的参数调用所有的回调
+        // callbacks.fired()，确定回调是否至少已经调用一次
+        // callbacks.fireWith([context] [, args] )，访问给定的上下文和参数列表中的所有回调，context，该列表中的回调
+        // 被触发的上下文引用
+        // callbacks.disable()，禁用回调列表中的回调
+        // callbacks.disabled()，这个方法不接受任何参数，确定回调列表是否已被禁用
+        // callbacks.empty()，从列表中删除所有的回调.
+        // callbacks.has( callback )，确定列表中是否提供一个回调
+        // callbacks.lock()，锁定回调列表的当前状态
+        // callbacks.locked()，确定回调列表是否已被锁定
+        function fn1(value) {
+            console.log(value);
+        }
+        function fn2(value) {
+            fn1("fn2 says: " + value);
+            return false;
+        }
+        var callbacks = $.Callbacks();
+        callbacks.add(fn1);
+        callbacks.fire("foo!");  // outputs: foo!
+        callbacks.add(fn2);  
+        callbacks.fire("bar!");  // outputs: bar!, fn2 says: bar!
+        callbacks.remove(fn2);
+        callbacks.fire("foobar");  // only outputs foobar, as fn2 has been removed.
+
+
+        
+    </script>
+</body>
+
+</html>
