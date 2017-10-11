@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Queue</title>
+    <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.js" type="text/javascript"></script>
+    <style>
+        #origin,
+        #goal {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+
+        #object {
+            width: 100px;
+            height: 100px;
+            float: right;
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="origin">
+        origin
+        <div id="object">
+            object
+        </div>
+    </div>
+    <button id="change">change</button>
+    <div id="goal">
+        goal
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // jQuery动画队列控制：
+            // .queue(queueName)，显示或操作匹配的元素上已经执行的函数列队,queeueNma含有队列名的字符串。默认是fx，
+            // 标准的动画队列
+            // .queue( [queueName ], newQueue)，queueName，一个含有队列名的字符串。默认是 fx，标准的动画队列
+
+
+            // $('#object').hide('slow').appendTo($('#goal')).show('slow');
+
+            // 上面代码是想先隐藏再将元素移动再显示，但实际效果却是先移动再隐藏再显示
+            // 原因：当你使用一系列的动画效果(如hide，show)，这些动画函数都会被放进一个名为"fx"的队列中，然后在以先进先出的
+            // 方式执行队列中的函数，而非动画函数，比如上面例子中的appendTo函数，则是不会进入这个队列中，并且先于动画函数的执行，
+            // 也就是在"fx"先进先出，取出第一个函数之前，它就已经执行了
+            // 解决方法：只要让appenTo后于hide先于show执行这样就能按顺序执行了，这时候就需要队列方法了
+            // $('#change').click(function () {
+            //     $('#object').hide('slow').queue(function (next) {
+            //         // 某个功能或某一系列功能插入几个动画之间，就把这一系列你想插入的功能函数放入queue()的函数体中 
+            //         $('#object').appendTo($('#goal'));
+            //         next(); // 参数"next"和next()则是保证再执行完这个插入的函数后，能继续能执行队列中的下一个动画函数
+            //     }).show('slow');
+            // });
+
+            // .dequeue([queueName]) 执行匹配元素队列的下一个函数，queueName一个含有队列名的字符串。默认是fx，标准的效果队列 
+            $('#change').click(function () {
+                $('#object').hide('slow').queue(function () {
+                    $('#object').appendTo($('#goal'));
+                    $(this).dequeue(); // 同上面的next作用一致
+                }).show('slow');
+            });
+
+            // .clearQueue( [queueName])，从列队中移除所有未执行的动画项，queueName一个含有队列名的字符串。默认是fx，
+            // 标准的效果队列
+        });
+    </script>
+</body>
+
+</html>

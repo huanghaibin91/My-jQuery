@@ -8,16 +8,17 @@
 </head>
 
 <body>
-    <img src="./image/jQuery-selector.png" alt=""><br>
+    <img src="./image/jQuery-selector.png" alt="">
+    <br>
     <img src="./image/img_jquerydim.gif" alt="">
     <a href="">this is a a</a>
     <script type="text/javascript">
         // 文档就绪，ready函数可以多次使用，且DOM元素加载好了就可以使用了
-        $(document).ready(function() {
+        $(document).ready(function () {
 
         });
         // 简写
-        $(function() {
+        $(function () {
 
         });
 
@@ -30,7 +31,7 @@
         // 数据访问，jQuery使用data()、removeData()操作DOM中data-[key] = [value]的数据
 
         // speed参数："slow"、"fast" 或毫秒；callback是完成动画后执行的函数
-        
+
         // 元素显示隐藏
         // $(selector).hide(speed,callback); 隐藏
         // $(selector).show(speed,callback); 显示
@@ -67,8 +68,10 @@
 
         // 事件对象
         // event.data 当前执行的处理器被绑定的时候，包含可选的数据传递给jQuery.fn.bind
-        $("a").each(function(i) {
-            $(this).bind('click', {index: i}, function(e) {
+        $("a").each(function (i) {
+            $(this).bind('click', {
+                index: i
+            }, function (e) {
                 alert('my index is ' + e.data.index);
             });
         });
@@ -82,6 +85,8 @@
         // removeAttr()
         // prop()  - 对于HTML元素本身就带有的固有属性，在处理时，使用prop方法
         // removeProp()
+
+        // $(string)，创建元素，参数是符合HTML写法的字符串 
 
         // 添加元素，append() 和 prepend() 方法能够通过参数接收无限数量的新元素。可以通过 jQuery 来生成文本/HTML
         // （就像上面的例子那样），或者通过 JavaScript 代码和 DOM 元素。
@@ -145,6 +150,11 @@
         // filter()，允许您规定一个标准。不匹配这个标准的元素会被从集合中删除，匹配的元素会被返回
         // not()，法返回不匹配标准的所有元素
 
+        // Ajax数据操作
+        // .data(key)，在匹配元素上存储任意相关数据. 返回匹配的元素集合中的第一个元素的给定名称的数据存储的值。 
+        // 通过.data(name, value)或HTML5 data-* 属性设置 
+        // .removeData([name])，在元素上移除绑定的数据
+
         // Ajax
         // $(selector).load(URL,data,callback);
         // 其中的callback有三个参数：
@@ -159,7 +169,7 @@
 
         // jQuery链式调用,return this返回当前对象，来维护插件链式调用，each循环实现每个对象的访问
         $.fn.example = function () {
-            return this.each(function() {
+            return this.each(function () {
                 // do something
             });
         };
@@ -194,7 +204,7 @@
         // })(jQuery);
 
         // 单例模式,如果实例存在就不再重新创建实例，利用data()来存放插件对象的实例
-        $.fn.example = function() {
+        $.fn.example = function () {
             var that = $(this);
             instance = that.data('example');
             if (!instance) {
@@ -203,7 +213,6 @@
         };
 
         // jQuery回调
-        
     </script>
 </body>
 

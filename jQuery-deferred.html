@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Deferred</title>
+    <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <script>
+        // deferred对象就是jQuery的回调函数解决方案。在英语中，defer的意思是"延迟"，所以deferred对象的含义就是"延迟"
+        // 到未来某个点再执行
+
+        // 通常Ajax写法 
+        $.ajax({
+            url: "test.html",
+            success: function () {　　　　　　
+                alert("哈哈，成功了！");　　　　
+            },
+            error: function () {　　　　　　
+                alert("出错啦！");　　　　
+            }　
+        });
+        // 使用延迟对象写法
+        $.ajax("test.html").done(function () {
+                alert("哈哈，成功了！");
+            }).fail(function () {
+                alert("出错啦！");
+            });
+    </script>
+</body>
+
+</html>
